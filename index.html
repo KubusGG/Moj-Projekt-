@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER STORE - Sklep Przyszłości</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-gradient"></div>
+    <div id="toast-container"></div>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-robot"></i> CYBER<span class="highlight">STORE</span>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Szukaj sprzętu...">
+            <i class="fa-solid fa-search"></i>
+        </div>
+
+        <div class="cart-wrapper" onclick="toggleKoszyk()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-badge" class="badge">0</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>FUTURE IS <span class="gradient-text">NOW</span></h1>
+        <p>Najpotężniejszy sprzęt w Twoim zasięgu.</p>
+    </section>
+
+    <nav class="categories">
+        <button class="active" onclick="filterProducts('all', this)">Wszystko</button>
+        <button onclick="filterProducts('Laptopy', this)">💻 Laptopy</button>
+        <button onclick="filterProducts('Smartfony', this)">📱 Smartfony</button>
+        <button onclick="filterProducts('Gaming', this)">🎮 Gaming</button>
+        <button onclick="filterProducts('Audio', this)">🎧 Audio</button>
+    </nav>
+
+    <main id="products-grid"></main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 CyberStore Project. Wszelkie prawa zastrzeżone.</p>
+            <div class="socials">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">
+                <a href="dokumentacja.html" style="color: var(--primary); text-decoration: none;">Zobacz Dokumentację Projektu</a>
+            </p>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Twój Koszyk <span id="cart-total-count">(0)</span></h2>
+                <button class="close-btn" onclick="toggleKoszyk()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="modal-footer">
+                <div class="total-price">
+                    <span>Razem:</span>
+                    <span id="final-price">0,00 zł</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">ZAMAWIAM <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

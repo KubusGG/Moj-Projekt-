@@ -103,12 +103,3 @@ Aplikacja realizuje kluczowe procesy sklepu internetowego:
     * Meta tagi responsywności (`viewport`).
 
 ---
-
-## 7. Instrukcja Uruchomienia
-
-1.  Pobierz folder z projektem.
-2.  Upewnij się, że posiadasz pliki: `index.html`, `style.css`, `script.js`.
-3.  Otwórz plik `index.html` w dowolnej nowoczesnej przeglądarce (Chrome, Edge, Firefox).
-4.  **Wymagane połączenie z Internetem:** Aplikacja pobiera fonty i zdjęcia z zewnętrznych serwerów (CDN).
-
----

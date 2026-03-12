@@ -1,105 +1,133 @@
-# 📘 Dokumentacja Techniczna Projektu: CyberStore
+# Dokumentacja Projektu CyberStore
 
-## 1. Metryka Projektu
-* **Nazwa projektu:** CyberStore 
-* **Typ aplikacji:** SPA (Single Page Application) – Aplikacja jednostronicowa
-* **Status:** MVP (Minimum Viable Product – Wersja demonstracyjna)
-* **Technologia:** Frontend (Client-Side)
-* **Autor:** [Jakub Kloskowski 1Kl]
+## 1. Informacje o Projekcie
 
----
+* Nazwa projektu: CyberStore
 
-## 2. Architektura Systemu
+* Rodzaj aplikacji: Aplikacja jednostronicowa
 
-Projekt został zrealizowany w architekturze **SPA (Single Page Application)**. Oznacza to, że strona ładuje się tylko raz, a wszystkie kolejne interakcje (filtrowanie, dodawanie do koszyka) odbywają się dynamicznie po stronie przeglądarki, bez konieczności przeładowywania strony.
+* Status: Wersja demonstracyjna
 
-### Zastosowany Wzorzec: MVC (Model-View-Controller)
-Chociaż jest to projekt frontendowy, zastosowałem logiczny podział kodu wzorowany na MVC:
+* Technologia: Frontend
 
-1.  **MODEL (Dane):**
-    * Plik `script.js` zawiera stałą `products` – tablicę obiektów JSON.
-    * Pełni ona rolę lokalnej bazy danych (ID, nazwa, cena, kategoria, zdjęcie).
-2.  **VIEW (Widok):**
-    * Plik `index.html` odpowiada za strukturę DOM.
-    * Plik `style.css` odpowiada za warstwę wizualną (responsywność, motyw Neon/Dark Mode).
-    * Widok jest generowany dynamicznie przez JavaScript (DOM Manipulation).
-3.  **CONTROLLER (Logika):**
-    * Funkcje w `script.js` sterują przepływem danych.
-    * Przykłady: `addToCart()` (dodawanie), `filterProducts()` (filtrowanie), `renderProducts()` (wyświetlanie).
-
-
-
-[Image of MVC architecture diagram for web application]
-
+* Autor: Jakub Kloskowski
 
 ---
 
-## 3. Stack Technologiczny (Użyte technologie)
+## 2. Jak Działa Nasz System
 
-### Frontend (Warstwa Klienta)
-* **HTML5:** Semantyczna budowa strony (użycie znaczników `<header>`, `<main>`, `<footer>`, `<section>`).
+Nasza strona ładuje się tylko raz, a wszystkie kolejne interakcje odbywają się dynamicznie bez potrzeby przeładowywania strony.
+
+### Nasz Wzorzec: Model-Widok-Kontroler
+
+Chociaż jest to projekt frontendowy, użyliśmy logiki podobnej do Model-Widok-Kontroler:
+
+1. **Dane:**
+
+* Mamy plik `script.js` z danymi w formacie JSON.
+
+* To nasza lokalna baza danych.
+
+2. **Widok:**
+
+* Plik `index.html` to struktura naszej strony.
+
+* Plik `style.css` to nasz wygląd.
+
+* Widok generowany jest dynamicznie przez JavaScript.
+
+3. **Logika:**
+
+* Funkcje w `script.js` sterują naszymi danymi.
+
+* Przykłady: dodawanie do koszyka, filtrowanie produktów, wyświetlanie.
+
+---
+
+## 3. Technologie, które Używamy
+
+### Frontend
+
+* **HTML5:** Użyliśmy semantycznych znaczników.
+
 * **CSS3:**
-    * **CSS Grid:** Do stworzenia responsywnej siatki produktów.
-    * **Flexbox:** Do układu nawigacji i koszyka.
-    * **Zmienne CSS (`:root`):** Do łatwego zarządzania kolorami motywu.
-* **JavaScript (ES6+):**
-    * Wykorzystanie **Vanilla JS** (czysty JS bez frameworków).
-    * Użycie funkcji strzałkowych, Template Literals oraz metod tablicowych (`.map`, `.filter`, `.reduce`).
 
-### Narzędzia i Biblioteki
-* **JSON:** Format przechowywania danych o produktach.
-* **FontAwesome:** Biblioteka ikon wektorowych (koszyk, lupka, ikony społecznościowe).
-* **Google Fonts:** Typografia (rodzina czcionek *Poppins*).
-* **Markdown / Marked.js:** Użyte do generowania i wyświetlania niniejszej dokumentacji technicznej.
+* **CSS Grid:** Do stworzenia responsywnej siatki.
+
+* **Flexbox:** Do układu nawigacji i koszyka.
+
+* **Zmienne CSS:** Do łatwego zarządzania kolorami.
+
+* **JavaScript:**
+
+* Użyliśmy czystego JavaScript bez frameworków.
+
+* Wykorzystaliśmy nowe funkcje, takie jak strzałkowe funkcje i template literals.
+
+### Narzędzia
+
+* **JSON:** Format przechowywania danych.
+
+* **FontAwesome:** Biblioteka ikon.
+
+* **Google Fonts:** Typografia.
+
+* **Markdown:** Użyliśmy go do tworzenia dokumentacji.
 
 ### Środowisko Deweloperskie
-* **Node.js / Vite:** (Opcjonalnie) Wykorzystywane jako lokalny serwer deweloperski do szybkiego podglądu zmian.
+
+* **Node.js / Vite:** Opcjonalnie używane jako lokalny serwer.
 
 ---
 
-## 4. Logika Biznesowa (UX/UI)
+## 4. Jak Działa Nasz Sklep
 
-Aplikacja realizuje kluczowe procesy sklepu internetowego:
+Nasza aplikacja realizuje kluczowe procesy sklepu internetowego:
 
-### Przepływ Danych (Data Flow):
-1.  **Inicjalizacja:** Po wejściu na stronę skrypt pobiera dane z tablicy i "rysuje" kafelki produktów.
-2.  **Wyszukiwanie (Live Search):** Użytkownik wpisuje frazę -> JS filtruje tablicę w czasie rzeczywistym -> Lista produktów jest odświeżana.
-3.  **Filtrowanie Kategorii:** Kliknięcie w przycisk (np. "Gaming") błyskawicznie zmienia wyświetlane produkty bez odświeżania strony.
-4.  **Obsługa Koszyka:**
-    * Dodanie produktu aktualizuje licznik w nagłówku.
-    * Wyświetla się powiadomienie typu "Toast" (dymek z potwierdzeniem).
-    * Koszyk jest przechowywany w pamięci tymczasowej (zmienna `cart`).
+### Przepływ Danych:
 
+1. **Inicjalizacja:** Po wejściu na stronę, skrypt pobiera dane i “rysuje” produkty.
 
+2. **Wyszukiwanie:** Użytkownik wpisuje frazę -> JavaScript filtruje dane -> Lista produktów jest odświeżana.
+
+3. **Filtrowanie:** Kliknięcie w przycisk zmienia wyświetlane produkty bez odświeżania strony.
+
+4. **Koszyk:**
+
+* Dodanie produktu aktualizuje licznik.
+
+* Wyświetla się powiadomienie.
+
+* Koszyk jest przechowywany w pamięci tymczasowej.
 
 ---
 
-## 5. Grupa Docelowa
+## 5. Dla Kogo Jest Nasz Sklep
 
-* **Odbiorca:** Gracze (Gamers), entuzjaści technologii, osoby szukające sprzętu komputerowego.
+* **Odbiorca:** Gracze, entuzjaści technologii, osoby szukające sprzętu komputerowego.
+
 * **Potrzeby:**
-    * **Szybkość:** Strona musi działać natychmiastowo (zaleta SPA).
-    * **Dark Mode:** Ciemny motyw jest standardem w branży gamingowej i mniej męczy wzrok.
-    * **Responsywność:** Możliwość wygodnego przeglądania na telefonie (Mobile First).
+
+* **Szybkość:** Strona musi działać szybko.
+
+* **Dark Mode:** Ciemny motyw jest standardem.
+
+* **Responsywność:** Możliwość wygodnego przeglądania na telefonie.
 
 ---
 
 ## 6. Wymagania Techniczne i Prawne
 
 ### Wymagania Prawne
-* **Licencja Kodu:** Projekt udostępniony na licencji **MIT** (Open Source).
-* **Prawa Autorskie (Grafika):** Wszystkie zdjęcia produktów pochodzą z serwisu **Unsplash**, który oferuje darmową licencję do użytku komercyjnego i edukacyjnego.
-* **RODO (Prywatność):**
-    * Aplikacja działa w oparciu o pamięć przeglądarki (Session Storage).
-    * W wersji demonstracyjnej **nie są zbierane ani wysyłane** żadne dane osobowe użytkowników na zewnętrzne serwery.
+
+* **Licencja:** Projekt udostępniony na licencji MIT.
+
+* **Prawa Autorskie:** Zdjęcia produktów pochodzą z serwisu Unsplash.
+
+* **Prywatność:** Aplikacja działa w oparciu o pamięć przeglądarki.
 
 ### Standaryzacja i Dostępność
-* **WCAG 2.1:**
-    * Zadbano o wysoki kontrast (jasny tekst na ciemnym tle).
-    * Obrazki posiadają atrybuty `alt` dla czytników ekranowych.
-    * Interfejs jest obsługiwalny za pomocą klawiatury (Tabindex).
-* **SEO (Search Engine Optimization):**
-    * Prawidłowa hierarchia nagłówków (`h1`, `h2`, `h3`).
-    * Meta tagi responsywności (`viewport`).
 
----
+* **WCAG 2.1:** Zadbano o wysoki kontrast i dostępność.
+
+* **SEO:** Prawidłowa hierarchia nagłówków i meta tagi.

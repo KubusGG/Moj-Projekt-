@@ -8,7 +8,7 @@
 
 * **Technologia:** Część klienta
 
-* **Autor:** [Twoje Imię i Nazwisko]
+* **Autor:** Jakub Kloskowski 
 
 ---
 
@@ -159,3 +159,4 @@ Aplikacja robi to, co powinien robić sklep internetowy:
 4. **Potrzebne połączenie z internetem:** Aplikacja ładuje czcionki i zdjęcia z zewnętrznych serwerów.
 
 ---
+

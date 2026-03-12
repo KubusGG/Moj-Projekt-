@@ -1,5 +1,3 @@
-# Dokumentacja Projektu CyberStore
-
 ## 1. Informacje o Projekcie
 
 * **Nazwa:** CyberStore (wersja 1.0)
@@ -10,7 +8,7 @@
 
 * **Technologia:** Część klienta
 
-* **Autor:** Jakub Kloskowski
+* **Autor:** [Twoje Imię i Nazwisko]
 
 ---
 

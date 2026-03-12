@@ -2,132 +2,162 @@
 
 ## 1. Informacje o Projekcie
 
-* Nazwa projektu: CyberStore
+* **Nazwa:** CyberStore (wersja 1.0)
 
-* Rodzaj aplikacji: Aplikacja jednostronicowa
+* **Rodzaj aplikacji:** Aplikacja internetowa na jednej stronie
 
-* Status: Wersja demonstracyjna
+* **Status:** Wersja podstawowa
 
-* Technologia: Frontend
+* **Technologia:** Część klienta
 
-* Autor: Jakub Kloskowski
+* **Autor:** Jakub Kloskowski
 
 ---
 
-## 2. Jak Działa Nasz System
+## 2. Jak działa System
 
-Nasza strona ładuje się tylko raz, a wszystkie kolejne interakcje odbywają się dynamicznie bez potrzeby przeładowywania strony.
+Cały projekt został zrobiony w architekturze aplikacji na jednej stronie. To oznacza, że strona ładuje się tylko raz, a potem wszystkie inne rzeczy dzieją się dynamicznie w przeglądarce, bez potrzeby odświeżania strony.
 
-### Nasz Wzorzec: Model-Widok-Kontroler
+### Jak to działa: Model-Widok-Kontroler
 
-Chociaż jest to projekt frontendowy, użyliśmy logiki podobnej do Model-Widok-Kontroler:
+Chociaż to jest projekt klienta, użyłem podziału kodu, który przypomina Model-Widok-Kontroler:
 
 1. **Dane:**
 
-* Mamy plik `script.js` z danymi w formacie JSON.
+* W pliku `script.js` jest stała `products`, która jest tablicą obiektów JSON.
 
-* To nasza lokalna baza danych.
+* Służy jako lokalna baza danych, w której są ID, nazwy, ceny, kategorie i zdjęcia.
 
 2. **Widok:**
 
-* Plik `index.html` to struktura naszej strony.
+* Plik `index.html` jest odpowiedzialny za strukturę strony.
 
-* Plik `style.css` to nasz wygląd.
+* Plik `style.css` jest odpowiedzialny za wygląd (jak się wszystko wyświetla na różnych urządzeniach i w trybie ciemnym).
 
-* Widok generowany jest dynamicznie przez JavaScript.
+* Widok jest tworzony dynamicznie przez JavaScript.
 
-3. **Logika:**
+3. **Kontroler:**
 
-* Funkcje w `script.js` sterują naszymi danymi.
+* Funkcje w `script.js` kontrolują, co się dzieje z danymi.
 
-* Przykłady: dodawanie do koszyka, filtrowanie produktów, wyświetlanie.
+* Przykłady: dodawanie do koszyka, filtrowanie produktów i wyświetlanie ich.
+
+[Obraz architektury MVC dla aplikacji internetowej]
 
 ---
 
-## 3. Technologie, które Używamy
+## 3. Technologie
 
-### Frontend
+### Część Klienta
 
-* **HTML5:** Użyliśmy semantycznych znaczników.
+* **HTML5:** Użyty do zbudowania strony w sposób zrozumiały dla ludzi i maszyn.
 
 * **CSS3:**
 
-* **CSS Grid:** Do stworzenia responsywnej siatki.
+* **CSS Grid:** Do stworzenia siatki produktów, która się dostosowuje do różnych ekranów.
 
-* **Flexbox:** Do układu nawigacji i koszyka.
+* **Flexbox:** Do ułożenia nawigacji i koszyka w sposób elastyczny.
 
-* **Zmienne CSS:** Do łatwego zarządzania kolorami.
+* **Zmienne CSS:** Do łatwego zarządzania kolorami w trybie ciemnym i innymi stylami.
 
-* **JavaScript:**
+* **JavaScript (ES6+):**
 
-* Użyliśmy czystego JavaScript bez frameworków.
+* Użyty czysty JavaScript bez dodatkowych bibliotek.
 
-* Wykorzystaliśmy nowe funkcje, takie jak strzałkowe funkcje i template literals.
+* Użyto nowoczesne funkcje, jak strzałki, łączenie stringów i metody na tablicach.
 
-### Narzędzia
+### Narzędzia i Biblioteki
 
-* **JSON:** Format przechowywania danych.
+* **JSON:** Format, w jakim są przechowywane dane o produktach.
 
-* **FontAwesome:** Biblioteka ikon.
+* **FontAwesome:** Biblioteka ikon wektorowych (np. koszyk, lupka, ikony mediów społecznościowych).
 
-* **Google Fonts:** Typografia.
+* **Google Fonts:** Rodzina czcionek *Poppins*.
 
-* **Markdown:** Użyliśmy go do tworzenia dokumentacji.
+* **Markdown / Marked.js:** Użyte do tworzenia i wyświetlania tej dokumentacji.
 
-### Środowisko Deweloperskie
+### Środowisko Programistyczne
 
-* **Node.js / Vite:** Opcjonalnie używane jako lokalny serwer.
+* **Node.js / Vite:** Można użyć jako serwer deweloperski, aby szybko zobaczyć zmiany.
 
 ---
 
-## 4. Jak Działa Nasz Sklep
+## 4. Jak to Działa
 
-Nasza aplikacja realizuje kluczowe procesy sklepu internetowego:
+Aplikacja robi to, co powinien robić sklep internetowy:
 
 ### Przepływ Danych:
 
-1. **Inicjalizacja:** Po wejściu na stronę, skrypt pobiera dane i “rysuje” produkty.
+1. **Początek:** Gdy wejdziesz na stronę, skrypt pobiera dane i rysuje kafelki produktów.
 
-2. **Wyszukiwanie:** Użytkownik wpisuje frazę -> JavaScript filtruje dane -> Lista produktów jest odświeżana.
+2. **Wyszukiwanie:** Gdy wpiszesz coś, JavaScript filtruje tablicę w czasie rzeczywistym i aktualizuje listę produktów.
 
-3. **Filtrowanie:** Kliknięcie w przycisk zmienia wyświetlane produkty bez odświeżania strony.
+3. **Filtrowanie:** Kliknięcie w przycisk (np. “Gaming") zmienia wyświetlane produkty bez odświeżania strony.
 
 4. **Koszyk:**
 
-* Dodanie produktu aktualizuje licznik.
+* Dodanie produktu aktualizuje licznik w nagłówku.
 
-* Wyświetla się powiadomienie.
+* Pojawi się powiadomienie potwierdzające.
 
-* Koszyk jest przechowywany w pamięci tymczasowej.
+* Koszyk jest przechowywany w pamięci przeglądarki.
 
 ---
 
-## 5. Dla Kogo Jest Nasz Sklep
+## 5. Dla Kogo Jest
 
-* **Odbiorca:** Gracze, entuzjaści technologii, osoby szukające sprzętu komputerowego.
+* **Dla kogo:** Graczy, miłośników technologii, ludzi szukających sprzętu komputerowego.
 
-* **Potrzeby:**
+* **Co potrzebują:**
 
-* **Szybkość:** Strona musi działać szybko.
+* **Szybkość:** Strona musi działać szybko (zaleta aplikacji na jednej stronie).
 
-* **Dark Mode:** Ciemny motyw jest standardem.
+* **Tryb ciemny:** Ciemny motyw jest standardem w branży gier i mniej męczy oczy.
 
-* **Responsywność:** Możliwość wygodnego przeglądania na telefonie.
+* **Dostosowanie do urządzeń:** Możliwość wygodnego przeglądania na telefonie.
 
 ---
 
 ## 6. Wymagania Techniczne i Prawne
 
-### Wymagania Prawne
+### Prawne
 
-* **Licencja:** Projekt udostępniony na licencji MIT.
+* **Licencja:** Projekt jest na licencji **MIT** (Otwarte Oprogramowanie).
 
-* **Prawa Autorskie:** Zdjęcia produktów pochodzą z serwisu Unsplash.
+* **Prawa autorskie:** Zdjęcia produktów są z serwisu **Unsplash**, gdzie można je używać za darmo.
 
-* **Prywatność:** Aplikacja działa w oparciu o pamięć przeglądarki.
+* **Ochrona danych:**
 
-### Standaryzacja i Dostępność
+* Aplikacja działa w pamięci przeglądarki.
 
-* **WCAG 2.1:** Zadbano o wysoki kontrast i dostępność.
+* W tej wersji **nie są zbierane** żadne dane osobowe.
 
-* **SEO:** Prawidłowa hierarchia nagłówków i meta tagi.
+### Standardy i Dostępność
+
+* **Dostępność:**
+
+* Duży kontrast kolorów.
+
+* Obrazki mają opisy dla czytników ekranowych.
+
+* Można sterować klawiaturą.
+
+* **Optymalizacja:**
+
+* Prawidłowa struktura nagłówków.
+
+* Tagi meta dla odpowiedniej wyświetlania na urządzeniach.
+
+---
+
+## 7. Jak Uruchomić
+
+1. Pobierz folder z projektem.
+
+2. Upewnij się, że masz pliki: `index.html`, `style.css`, `script.js`.
+
+3. Otwórz `index.html` w przeglądarce.
+
+4. **Potrzebne połączenie z internetem:** Aplikacja ładuje czcionki i zdjęcia z zewnętrznych serwerów.
+
+---

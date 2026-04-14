@@ -1,44 +1,39 @@
- Projekt: ElectroCore 
-1. Architektura i Koncepcja
-Model: Headless (oddzielny front i back).
 
-Typ: SPA z obsługą SSR (żeby Google widziało produkty).
 
-Komunikacja: REST API (wymiana JSON-ów).
+---
 
-Logika: MVC (klasyczny podział na modele, widoki i kontrolery).
+#  Projekt: ElectroCore
 
-2. Stack Technologiczny
-Języki: JavaScript (ES6+), PHP 8.x.
+### 1. O co chodzi?
+Buduję nowoczesny sklep z elektroniką (coś jak Media Expert). Chcę, żeby był szybki na telefonach i łatwy do znalezienia w Google.
 
-Front-end: Vite + Tailwind CSS (szybkie stylowanie) + Marked.js (opisy produktów).
+### 2. Architektura
+* **Headless:** Rozdzielam wygląd (Front) od silnika (Back).
+* **SSR + SPA:** Strona działa płynnie, ale serwer pomaga ją ładować pod SEO.
+* **API:** Dane latają w JSON przez REST API.
+* **MVC:** Klasyczny porządek w kodzie.
 
-Back-end: Laravel + Node.js (do SSR i mikroserwisów).
+### 3. Technologie (Stack)
+* **Języki:** JS (ES6+) oraz PHP 8.
+* **Front:** Vite (szybki build), Tailwind (style), Marked.js (opisy produktów).
+* **Back:** Laravel + Node.js.
+* **Baza:** PostgreSQL + Redis do przyspieszenia sesji.
 
-Baza danych: PostgreSQL (główna) + Redis (szybki cache/sesje).
+### 4. Co w środku? (Funkcje)
+* **Filtry:** Wybieranie sprzętu po parametrach (fasetowe).
+* **Porównywarka:** Zestawienie specyfikacji dwóch produktów.
+* **Koszyk:** Obsługa kodów rabatowych i system ratalny.
+* **Konto:** Historia zamówień i panel reklamacji.
 
-3. Funkcje (Co będzie działać?)
-Wyszukiwanie: Filtry fasetowe (np. wybór marki, ceny, RAMu).
+### 5. Dla kogo?
+* Zwykli ludzie (B2C) i firmy (B2B).
+* Ma być **Mobile First** – telefon to podstawa.
 
-Zakupy: Koszyk, kody zniżkowe, płatność na raty.
+### 6. Prawo i Standardy
+* **Zasady:** RODO, Omnibus (historia cen), WCAG 2.1 (dostępność).
+* **SEO:** Przyjazne linki i tagi dla Google.
+* **Licencje:** Tylko darmowe, open-source (MIT/Apache).
 
-User Experience: Porównywarka sprzętu i panel klienta ze statusami zamówień.
-
-4. Grupa Docelowa
-Ludzie szukający elektroniki (B2C) i firmy (B2B).
-
-Priorytet: Sklep musi być "Mobile First" (wygodny na telefonie).
-
-5. Wymagania Prawne i Standardy
-Prawo: RODO, polityka cookies i Omnibus (historia cen).
-
-Dostępność: WCAG 2.1 (żeby każdy mógł korzystać ze strony).
-
-SEO: Przyjazne linki, SSR i dane strukturalne dla Google.
-
-6. Dokumentacja
-W kodzie: JSDoc oraz PHPDoc.
-
-Techniczna: Dokumentacja API w Swaggerze.
-
-Opis projektu: Pliki .md z opisem procesów biznesowych.
+### 7. Dokumentacja
+* Komentarze w kodzie: **JSDoc / PHPDoc**.
+* Dokumentacja API: **Swagger**.

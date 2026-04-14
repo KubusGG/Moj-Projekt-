@@ -1,162 +1,44 @@
-## 1. Informacje o Projekcie
+ Projekt: ElectroCore 
+1. Architektura i Koncepcja
+Model: Headless (oddzielny front i back).
 
-* **Nazwa:** CyberStore (wersja 1.0)
+Typ: SPA z obsługą SSR (żeby Google widziało produkty).
 
-* **Rodzaj aplikacji:** Aplikacja internetowa na jednej stronie
+Komunikacja: REST API (wymiana JSON-ów).
 
-* **Status:** Wersja podstawowa
+Logika: MVC (klasyczny podział na modele, widoki i kontrolery).
 
-* **Technologia:** Część klienta
+2. Stack Technologiczny
+Języki: JavaScript (ES6+), PHP 8.x.
 
-* **Autor:** Jakub Kloskowski 
+Front-end: Vite + Tailwind CSS (szybkie stylowanie) + Marked.js (opisy produktów).
 
----
+Back-end: Laravel + Node.js (do SSR i mikroserwisów).
 
-## 2. Jak działa System
+Baza danych: PostgreSQL (główna) + Redis (szybki cache/sesje).
 
-Cały projekt został zrobiony w architekturze aplikacji na jednej stronie. To oznacza, że strona ładuje się tylko raz, a potem wszystkie inne rzeczy dzieją się dynamicznie w przeglądarce, bez potrzeby odświeżania strony.
+3. Funkcje (Co będzie działać?)
+Wyszukiwanie: Filtry fasetowe (np. wybór marki, ceny, RAMu).
 
-### Jak to działa: Model-Widok-Kontroler
+Zakupy: Koszyk, kody zniżkowe, płatność na raty.
 
-Chociaż to jest projekt klienta, użyłem podziału kodu, który przypomina Model-Widok-Kontroler:
+User Experience: Porównywarka sprzętu i panel klienta ze statusami zamówień.
 
-1. **Dane:**
+4. Grupa Docelowa
+Ludzie szukający elektroniki (B2C) i firmy (B2B).
 
-* W pliku `script.js` jest stała `products`, która jest tablicą obiektów JSON.
+Priorytet: Sklep musi być "Mobile First" (wygodny na telefonie).
 
-* Służy jako lokalna baza danych, w której są ID, nazwy, ceny, kategorie i zdjęcia.
+5. Wymagania Prawne i Standardy
+Prawo: RODO, polityka cookies i Omnibus (historia cen).
 
-2. **Widok:**
+Dostępność: WCAG 2.1 (żeby każdy mógł korzystać ze strony).
 
-* Plik `index.html` jest odpowiedzialny za strukturę strony.
+SEO: Przyjazne linki, SSR i dane strukturalne dla Google.
 
-* Plik `style.css` jest odpowiedzialny za wygląd (jak się wszystko wyświetla na różnych urządzeniach i w trybie ciemnym).
+6. Dokumentacja
+W kodzie: JSDoc oraz PHPDoc.
 
-* Widok jest tworzony dynamicznie przez JavaScript.
+Techniczna: Dokumentacja API w Swaggerze.
 
-3. **Kontroler:**
-
-* Funkcje w `script.js` kontrolują, co się dzieje z danymi.
-
-* Przykłady: dodawanie do koszyka, filtrowanie produktów i wyświetlanie ich.
-
-[Obraz architektury MVC dla aplikacji internetowej]
-
----
-
-## 3. Technologie
-
-### Część Klienta
-
-* **HTML5:** Użyty do zbudowania strony w sposób zrozumiały dla ludzi i maszyn.
-
-* **CSS3:**
-
-* **CSS Grid:** Do stworzenia siatki produktów, która się dostosowuje do różnych ekranów.
-
-* **Flexbox:** Do ułożenia nawigacji i koszyka w sposób elastyczny.
-
-* **Zmienne CSS:** Do łatwego zarządzania kolorami w trybie ciemnym i innymi stylami.
-
-* **JavaScript (ES6+):**
-
-* Użyty czysty JavaScript bez dodatkowych bibliotek.
-
-* Użyto nowoczesne funkcje, jak strzałki, łączenie stringów i metody na tablicach.
-
-### Narzędzia i Biblioteki
-
-* **JSON:** Format, w jakim są przechowywane dane o produktach.
-
-* **FontAwesome:** Biblioteka ikon wektorowych (np. koszyk, lupka, ikony mediów społecznościowych).
-
-* **Google Fonts:** Rodzina czcionek *Poppins*.
-
-* **Markdown / Marked.js:** Użyte do tworzenia i wyświetlania tej dokumentacji.
-
-### Środowisko Programistyczne
-
-* **Node.js / Vite:** Można użyć jako serwer deweloperski, aby szybko zobaczyć zmiany.
-
----
-
-## 4. Jak to Działa
-
-Aplikacja robi to, co powinien robić sklep internetowy:
-
-### Przepływ Danych:
-
-1. **Początek:** Gdy wejdziesz na stronę, skrypt pobiera dane i rysuje kafelki produktów.
-
-2. **Wyszukiwanie:** Gdy wpiszesz coś, JavaScript filtruje tablicę w czasie rzeczywistym i aktualizuje listę produktów.
-
-3. **Filtrowanie:** Kliknięcie w przycisk (np. “Gaming") zmienia wyświetlane produkty bez odświeżania strony.
-
-4. **Koszyk:**
-
-* Dodanie produktu aktualizuje licznik w nagłówku.
-
-* Pojawi się powiadomienie potwierdzające.
-
-* Koszyk jest przechowywany w pamięci przeglądarki.
-
----
-
-## 5. Dla Kogo Jest
-
-* **Dla kogo:** Graczy, miłośników technologii, ludzi szukających sprzętu komputerowego.
-
-* **Co potrzebują:**
-
-* **Szybkość:** Strona musi działać szybko (zaleta aplikacji na jednej stronie).
-
-* **Tryb ciemny:** Ciemny motyw jest standardem w branży gier i mniej męczy oczy.
-
-* **Dostosowanie do urządzeń:** Możliwość wygodnego przeglądania na telefonie.
-
----
-
-## 6. Wymagania Techniczne i Prawne
-
-### Prawne
-
-* **Licencja:** Projekt jest na licencji **MIT** (Otwarte Oprogramowanie).
-
-* **Prawa autorskie:** Zdjęcia produktów są z serwisu **Unsplash**, gdzie można je używać za darmo.
-
-* **Ochrona danych:**
-
-* Aplikacja działa w pamięci przeglądarki.
-
-* W tej wersji **nie są zbierane** żadne dane osobowe.
-
-### Standardy i Dostępność
-
-* **Dostępność:**
-
-* Duży kontrast kolorów.
-
-* Obrazki mają opisy dla czytników ekranowych.
-
-* Można sterować klawiaturą.
-
-* **Optymalizacja:**
-
-* Prawidłowa struktura nagłówków.
-
-* Tagi meta dla odpowiedniej wyświetlania na urządzeniach.
-
----
-
-## 7. Jak Uruchomić
-
-1. Pobierz folder z projektem.
-
-2. Upewnij się, że masz pliki: `index.html`, `style.css`, `script.js`.
-
-3. Otwórz `index.html` w przeglądarce.
-
-4. **Potrzebne połączenie z internetem:** Aplikacja ładuje czcionki i zdjęcia z zewnętrznych serwerów.
-
----
-
+Opis projektu: Pliki .md z opisem procesów biznesowych.

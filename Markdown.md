@@ -1,4 +1,5 @@
  Projekt: TikTok
+
 Architektura: Proste SPA oparte na wzorcu MVC.
 
 Technologie: HTML, CSS, JS.

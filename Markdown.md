@@ -1,4 +1,4 @@
-#  Projekt: TikTok
+#  Projekt: TikTok dla PRO
 
 * **Architektura:** Proste SPA.
 * **Technologie:** HTML, CSS, JS.

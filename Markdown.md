@@ -1,6 +1,6 @@
 #  Projekt: TikTok
 
-* **Architektura:** Proste SPA oparte na wzorcu MVC.
+* **Architektura:** Proste SPA.
 * **Technologie:** HTML, CSS, JS.
 * **Logika biznesowa:** Zarządzanie przepływem danych i funkcjami aplikacji.
 * **Narzędzia:** Visual Studio Code.

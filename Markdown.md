@@ -1,56 +1,51 @@
-Projekt: Streamline Messenger (Real-time Communication)
+Projekt: Twitch Stream Explorer (Live Hub)
 Architektura
-SPA (Single Page Application): Błyskawiczne przełączanie między konwersacjami bez odświeżania, z zachowaniem stanu scrollowania.
+SPA (Single Page Application): Dynamiczne przełączanie między typami streamów i kategoriami bez przeładowania strony.
 
-REST API + WebSockets: REST do autoryzacji i pobierania historii; WebSockets (np. Socket.io) do przesyłania wiadomości w czasie rzeczywistym i statusów "pisze...".
+REST API: Backend w PHP służący jako proxy dla API Twitcha (autoryzacja OAuth2) oraz przechowujący metadane o obserwowanych tagach w bazie danych.
 
 Stack technologiczny
-Języki: JavaScript (ES6+), PHP (Backend/API), HTML5, CSS3 (Flexbox/Grid), JSON.
+Języki: JS (ES6+), PHP, HTML, CSS, JSON.
 
-Narzędzia: Node.js (Vite do budowy frontendu), npm do zarządzania zależnościami.
+Narzędzia: Node.js (wyłącznie do kompilacji Vite), Vite.
 
 Logika biznesowa i podział treści
-1. Kategorie konwersacji (Widok główny)
-Czaty Prywatne (DM): Bezpośrednia komunikacja 1:1.
+1. Kategorie główne (Stream Types)
+Gaming:
 
-Grupy (Channels):
+Sub-grupa: Esports (turnieje i pro-playerzy).
 
-Publiczne: Otwarte kanały tematyczne.
+Sub-grupa: Speedrun (przechodzenie gier na czas).
 
-Prywatne: Zamknięte grupy znajomych/zespołów.
+IRL & Creative:
 
-2. System statusów i interakcji
-Statusy obecności: Dostępny, Zaraz wracam, Nie przeszkadzać (sterowane logicznie przez backend).
+Sub-grupa: Just Chatting (rozmowy, podcasty).
 
-Reakcje: Możliwość dodania emoji do konkretnej wiadomości (przechowywane jako powiązane ID w bazie danych).
+Sub-grupa: Software & Dev (programowanie i technologia).
 
-System powiadomień: Licznik nieprzeczytanych wiadomości (Badge) aktualizowany dynamicznie.
+2. System filtrowania i Tagi
+Menu Tagi: Interaktywny panel pobierający aktualne tagi z Twitcha (np. No Backseating, Drops Enabled, Level Up, Tutorial).
+
+Filtrowanie Live: Dynamiczne odświeżanie listy streamów na podstawie:
+
+Liczby widzów (od najpopularniejszych / od niszowych).
+
+Języka transmisji (np. tylko polskie kanały).
+
+Wybranej sub-grupy.
 
 3. UX/UI i Prezentacja
-Lista czatów (Sidebar): Awatary użytkowników, podgląd ostatniej wiadomości, czas otrzymania.
+Karta Streamu (Live Card Design):
 
-Okno rozmowy (Main View):
+Dynamiczny Thumbnail: Podgląd live (klatki z transmisji).
 
-Dymki wiadomości: Rozróżnienie wizualne (lewo/prawo) dla nadawcy i odbiorcy.
+Status Live: Pulsujący wskaźnik "LIVE" z aktualną liczbą widzów.
 
-Rich Text: Wsparcie dla markdown (renderowane przez marked.js) – np. pogrubienia lub bloki kodu w wiadomościach.
+Opis kanału: Renderowany przez marked.js (pobierany z sekcji "O mnie" streamera).
 
-Multimedia: Inline preview dla linków i obrazków.
-
-Layout: "Double Column" na desktopie, widok pełnoekranowy rozmowy na mobile.
+Layout: Nowoczesny, ciemny motyw (Dark Mode) z responsywną siatką (CSS Grid).
 
 Grupa docelowa
-Odbiorca: Zespoły projektowe lub grupy znajomych potrzebujące lekkiego, autorskiego narzędzia do komunikacji.
+Odbiorca: Użytkownicy Twitcha szukający nowych treści poza algorytmem strony głównej.
 
-Potrzeby: Brak opóźnień (low latency), bezpieczne logowanie, czytelna historia rozmów.
-
-Wymagania techniczne i standardy
-Bezpieczeństwo i Dostępność
-WCAG 2.1: Wysoki kontrast tekstu, obsługa czytników ekranu dla wiadomości przychodzących, nawigacja klawiaturą (Tabowanie po listach czatów).
-
-Sanitaryzacja: Obowiązkowe oczyszczanie danych wejściowych (XSS prevention) po stronie PHP i JS.
-
-Dokumentacja
-Technical Docs: Dokumentacja API w formacie OpenAPI/Swagger oraz komentarze JSDoc/PHPDoc.
-
-Struktura danych: Dokument Markdown opisujący schemat bazy (Tabela: users, messages, conversations).
+Potrzeby: Szybki podgląd tego, co dzieje się na platformie w konkretnych niszach tematycznych.

@@ -1,5 +1,3 @@
-Oczywiście, oto cały projekt przygotowany w czystym formacie Markdown, bez użycia tabel, z zachowaniem przejrzystej struktury punktowej i nagłówków:
-
 #  Twitch Stream Explorer (Live Hub)
 
 Nowoczesna aplikacja typu **SPA (Single Page Application)** służąca do odkrywania treści na platformie Twitch, oferująca zaawansowane filtrowanie niszowe i dynamiczny interfejs użytkownika.

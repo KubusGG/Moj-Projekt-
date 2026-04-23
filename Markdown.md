@@ -1,9 +1,9 @@
-#  Projekt: TikTok dla PRO
+#  Projekt: Epic Games Premium
 
-* **Architektura:** Proste SPA.
+* **Architektura:** Prosta aplikacja SPA .
 * **Technologie:** HTML, CSS, JS.
-* **Logika biznesowa:** Zarządzanie przepływem danych i funkcjami aplikacji.
+* **Logika biznesowa:** Sprzedasz gier i dodatków.
 * **Narzędzia:** Visual Studio Code.
-* **Bezpieczeństwo:** Klucze API ukryte przed publicznym dostępem.
-* **Standardy:** Optymalizacja SEO oraz zasady WCAG.
-* **Dokumentacja:** Techniczne JSDoc i opis w Markdown.
+* **Bezpieczeństwo:** Klucze API .
+* **Standardy:** Optymalizacja .
+* **Dokumentacja:** Markdown.

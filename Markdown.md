@@ -1,54 +1,56 @@
-Dokumentacja Projektu: Messenger App
- Architektura Systemu
-Projekt jest realizowany w nowoczesnym modelu jednostronicowym:
+Projekt: Streamline Messenger (Real-time Communication)
+Architektura
+SPA (Single Page Application): Błyskawiczne przełączanie między konwersacjami bez odświeżania, z zachowaniem stanu scrollowania.
 
-SPA (Single Page Application): Cała logika interfejsu i nawigacja odbywa się po stronie klienta (przeglądarki).
+REST API + WebSockets: REST do autoryzacji i pobierania historii; WebSockets (np. Socket.io) do przesyłania wiadomości w czasie rzeczywistym i statusów "pisze...".
 
-Dynamiczne renderowanie: Widoki są generowane dynamicznie przez JavaScript, co eliminuje przeładowywanie strony przy przechodzeniu między rozmowami.
+Stack technologiczny
+Języki: JavaScript (ES6+), PHP (Backend/API), HTML5, CSS3 (Flexbox/Grid), JSON.
 
-Asynchroniczność: Komunikacja z bazą danych odbywa się w tle, zapewniając płynność działania UI (User Experience).
+Narzędzia: Node.js (Vite do budowy frontendu), npm do zarządzania zależnościami.
 
- Stack Technologiczny
-Technologie podstawowe:
-Języki: HTML5, CSS3, JavaScript (ES6+), PHP (Backend).
+Logika biznesowa i podział treści
+1. Kategorie konwersacji (Widok główny)
+Czaty Prywatne (DM): Bezpośrednia komunikacja 1:1.
 
-Formaty: JSON (wymiana danych), Markdown (formatowanie treści).
+Grupy (Channels):
 
-Frameworki i Biblioteki:
-Vite: Nowoczesne narzędzie do budowania i serwowania aplikacji.
+Publiczne: Otwarte kanały tematyczne.
 
-Node.js: Środowisko do zarządzania pakietami (npm).
+Prywatne: Zamknięte grupy znajomych/zespołów.
 
-marked.js: Biblioteka zamieniająca składnię Markdown na HTML w wiadomościach.
+2. System statusów i interakcji
+Statusy obecności: Dostępny, Zaraz wracam, Nie przeszkadzać (sterowane logicznie przez backend).
 
-Bezpieczeństwo:
-Przechowywanie tokenów i kluczy API w plikach .env.
+Reakcje: Możliwość dodania emoji do konkretnej wiadomości (przechowywane jako powiązane ID w bazie danych).
 
-Walidacja danych po stronie klienta i serwera.
+System powiadomień: Licznik nieprzeczytanych wiadomości (Badge) aktualizowany dynamicznie.
 
- Logika Biznesowa
-Funkcjonalności i UX:
-System wiadomości: Pisanie i odbieranie komunikatów w czasie rzeczywistym.
+3. UX/UI i Prezentacja
+Lista czatów (Sidebar): Awatary użytkowników, podgląd ostatniej wiadomości, czas otrzymania.
 
-Obsługa Markdown: Użytkownicy mogą przesyłać sformatowany tekst, listy i bloki kodu.
+Okno rozmowy (Main View):
 
-Zarządzanie stanem: Aplikacja pamięta aktywną rozmowę i statusy użytkowników bez odświeżania strony.
+Dymki wiadomości: Rozróżnienie wizualne (lewo/prawo) dla nadawcy i odbiorcy.
 
- Grupa Docelowa
-Odbiorcy: Deweloperzy i zespoły techniczne.
+Rich Text: Wsparcie dla markdown (renderowane przez marked.js) – np. pogrubienia lub bloki kodu w wiadomościach.
 
-Potrzeby: Prosty, szybki komunikator z obsługą formatowania technicznego.
+Multimedia: Inline preview dla linków i obrazków.
 
- Wymagania Prawne i Standardy
-RODO: Zarządzanie prywatnością użytkownika i ciasteczkami (cookies).
+Layout: "Double Column" na desktopie, widok pełnoekranowy rozmowy na mobile.
 
-Prawa autorskie: Licencja określająca zasady korzystania z kodu.
+Grupa docelowa
+Odbiorca: Zespoły projektowe lub grupy znajomych potrzebujące lekkiego, autorskiego narzędzia do komunikacji.
 
-WCAG 2.1: Dostosowanie interfejsu dla osób z niepełnosprawnościami (czytniki ekranu, kontrast).
+Potrzeby: Brak opóźnień (low latency), bezpieczne logowanie, czytelna historia rozmów.
 
-SEO: Podstawowa optymalizacja strony wejściowej (Landing Page).
+Wymagania techniczne i standardy
+Bezpieczeństwo i Dostępność
+WCAG 2.1: Wysoki kontrast tekstu, obsługa czytników ekranu dla wiadomości przychodzących, nawigacja klawiaturą (Tabowanie po listach czatów).
 
- Dokumentacja Końcowa
-Dokumentacja techniczna: Wykorzystanie JSDoc dla kodu JavaScript oraz PHPDoc dla logiki serwerowej.
+Sanitaryzacja: Obowiązkowe oczyszczanie danych wejściowych (XSS prevention) po stronie PHP i JS.
 
-Opis projektu: Dokumentacja w formacie Markdown opisująca strukturę plików i sposób instalacji.
+Dokumentacja
+Technical Docs: Dokumentacja API w formacie OpenAPI/Swagger oraz komentarze JSDoc/PHPDoc.
+
+Struktura danych: Dokument Markdown opisujący schemat bazy (Tabela: users, messages, conversations).

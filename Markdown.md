@@ -1,51 +1,63 @@
-Projekt: Twitch Stream Explorer (Live Hub)
-Architektura
-SPA (Single Page Application): Dynamiczne przełączanie między typami streamów i kategoriami bez przeładowania strony.
+Oczywiście, oto cały projekt przygotowany w czystym formacie Markdown, bez użycia tabel, z zachowaniem przejrzystej struktury punktowej i nagłówków:
 
-REST API: Backend w PHP służący jako proxy dla API Twitcha (autoryzacja OAuth2) oraz przechowujący metadane o obserwowanych tagach w bazie danych.
+#  Twitch Stream Explorer (Live Hub)
 
-Stack technologiczny
-Języki: JS (ES6+), PHP, HTML, CSS, JSON.
+Nowoczesna aplikacja typu **SPA (Single Page Application)** służąca do odkrywania treści na platformie Twitch, oferująca zaawansowane filtrowanie niszowe i dynamiczny interfejs użytkownika.
 
-Narzędzia: Node.js (wyłącznie do kompilacji Vite), Vite.
+##  Architektura Systemu
 
-Logika biznesowa i podział treści
-1. Kategorie główne (Stream Types)
-Gaming:
+* **SPA (Single Page Application):** Frontend oparty na dynamicznym przełączaniu między widokami bez przeładowywania strony, co zapewnia szybkość działania i płynność nawigacji.
+* **REST API (PHP Proxy):** Backend pełniący rolę bezpiecznego pośrednika dla API Twitcha. Odpowiada za:
+    * Autoryzację OAuth2 (ukrywanie kluczy przed użytkownikiem).
+    * Pobieranie danych o streamach i kategoriach.
+    * Zarządzanie metadanymi o obserwowanych tagach w bazie danych.
 
-Sub-grupa: Esports (turnieje i pro-playerzy).
+## 🛠️ Stack Technologiczny
 
-Sub-grupa: Speedrun (przechodzenie gier na czas).
+* **Języki Programowania:** JavaScript (ES6+), PHP, HTML5, CSS3.
+* **Format Danych:** JSON (wymiana danych między PHP a JS).
+* **Narzędzia Deweloperskie:** Vite (szybkie budowanie i HMR), Node.js (wyłącznie do procesów kompilacji).
+* **Biblioteki Zewnętrzne:** `marked.js` do renderowania opisów kanałów z formatu Markdown.
 
-IRL & Creative:
+##  Logika Biznesowa i Podział Treści
 
-Sub-grupa: Just Chatting (rozmowy, podcasty).
+### 1. Kategorie Główne (Stream Types)
+Aplikacja kategoryzuje treści w sposób bardziej precyzyjny niż standardowy katalog Twitcha:
+* **Gaming:**
+    * *Esports*: Transmisje z turniejów i pro-playerzy.
+    * *Speedrun*: Przechodzenie gier na czas.
+* **IRL & Creative:**
+    * *Just Chatting*: Rozmowy, podcasty i interakcja z czatem.
+    * *Software & Dev*: Live-coding, elektronika i technologia.
 
-Sub-grupa: Software & Dev (programowanie i technologia).
+### 2. System Filtrowania i Tagi
+* **Menu Tagi:** Interaktywny panel, który pobiera i wyświetla aktualne tagi bezpośrednio z serwerów Twitcha (np. *No Backseating*, *Drops Enabled*, *Level Up*).
+* **Dynamiczne Filtrowanie:** Natychmiastowe odświeżanie listy na podstawie:
+    * Popularności (sortowanie od największych lub najmniejszych transmisji).
+    * Języka (np. wybór wyłącznie kanałów polskojęzycznych).
+    * Przynależności do wybranej sub-grupy tematycznej.
 
-2. System filtrowania i Tagi
-Menu Tagi: Interaktywny panel pobierający aktualne tagi z Twitcha (np. No Backseating, Drops Enabled, Level Up, Tutorial).
+##  UX/UI i Prezentacja
 
-Filtrowanie Live: Dynamiczne odświeżanie listy streamów na podstawie:
+### Live Card Design (Karta Streamu)
+Każdy stream prezentowany jest w formie nowoczesnej karty:
+* **Dynamic Thumbnail:** Podgląd na żywo pobierany z Twitcha w formie klatek z transmisji.
+* **Status Live:** Pulsujący wskaźnik "LIVE" wraz z dynamicznie aktualizowaną liczbą widzów.
+* **Opis Kanału:** Sekcja "O mnie" streamera, renderowana z formatu Markdown przy użyciu biblioteki `marked.js`.
 
-Liczby widzów (od najpopularniejszych / od niszowych).
+### Wygląd i Układ
+* **Dark Mode:** Nowoczesny, ciemny motyw graficzny wykorzystujący estetykę Twitcha (odcienie fioletu i szarości).
+* **Layout:** Responsywna siatka (CSS Grid), która dostosowuje liczbę kolumn do szerokości ekranu (Desktop / Mobile).
 
-Języka transmisji (np. tylko polskie kanały).
+##  Wymagania Techniczne i Standardy
 
-Wybranej sub-grupy.
+### Dostępność (WCAG 2.1)
+* Zachowanie wysokiego kontrastu tekstów i elementów nawigacyjnych.
+* Czytelne etykiety (Aria-labels) dla czytników ekranu, szczególnie przy dynamicznie zmieniających się licznikach widzów.
 
-3. UX/UI i Prezentacja
-Karta Streamu (Live Card Design):
+### Dokumentacja Projektowa
+* **Kod źródłowy:** Pełne opisy funkcji i logiki autoryzacji w standardzie JSDocs (dla JS) oraz PHPDoc (dla PHP).
+* **Struktura JSON:** Dokumentacja Markdown opisująca mapowanie pól z natywnego API Twitcha na format wykorzystywany przez frontend aplikacji.
 
-Dynamiczny Thumbnail: Podgląd live (klatki z transmisji).
-
-Status Live: Pulsujący wskaźnik "LIVE" z aktualną liczbą widzów.
-
-Opis kanału: Renderowany przez marked.js (pobierany z sekcji "O mnie" streamera).
-
-Layout: Nowoczesny, ciemny motyw (Dark Mode) z responsywną siatką (CSS Grid).
-
-Grupa docelowa
-Odbiorca: Użytkownicy Twitcha szukający nowych treści poza algorytmem strony głównej.
-
-Potrzeby: Szybki podgląd tego, co dzieje się na platformie w konkretnych niszach tematycznych.
+##  Grupa Docelowa
+Użytkownicy Twitcha poszukujący nowych, ciekawych twórców poza głównym algorytmem strony głównej, szczególnie zainteresowani konkretnymi niszami tematycznymi (np. programowanie, speedruny).

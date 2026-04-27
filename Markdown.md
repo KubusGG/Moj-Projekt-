@@ -1,61 +1,33 @@
-#  Twitch Stream Explorer (Live Hub)
+**Katalog Ofert Pracy**
 
-Nowoczesna aplikacja typu **SPA (Single Page Application)** służąca do odkrywania treści na platformie Twitch, oferująca zaawansowane filtrowanie niszowe i dynamiczny interfejs użytkownika.
+**Cel strony:**
+Strona, na której będzie można znaleźć oferty pracy dopasowane do profilu i potrzeb użytkownika, np. Kasjer, Magazynier, Sprzedawca itp.
 
-##  Architektura Systemu
+### 1. Logika Biznesowa
 
-* **SPA (Single Page Application):** Frontend oparty na dynamicznym przełączaniu między widokami bez przeładowywania strony, co zapewnia szybkość działania i płynność nawigacji.
-* **REST API (PHP Proxy):** Backend pełniący rolę bezpiecznego pośrednika dla API Twitcha. Odpowiada za:
-    * Autoryzację OAuth2 (ukrywanie kluczy przed użytkownikiem).
-    * Pobieranie danych o streamach i kategoriach.
-    * Zarządzanie metadanymi o obserwowanych tagach w bazie danych.
+* **Model Kategoryzacji:** Oferty pracy są pogrupowane w predefiniowane kategorie branżowe (np. Handel detaliczny, Logistyka, Gastronomia). Jedno ogłoszenie (np. stanowisko kasjera) przypisane jest do jednej kategorii głównej.
+* **Dynamiczne Filtrowanie (Real-time):** Po wybraniu kategorii przez kandydata, aplikacja wysyła zapytanie do bazy danych z filtrem `WHERE category = 'wybrana_nazwa'` (np. 'Handel').
+* **Zasada "No-Reload":** Zmiana kategorii nie odświeża całej strony, a jedynie komponent z listą dostępnych wakatów.
+* **Zarządzanie treścią:** Dane o ofertach pracy są odseparowane od kodu – edycja nazwy stanowiska, wymagań lub stawki godzinowej w bazie danych natychmiast aktualizuje stronę u wszystkich szukających pracy.
 
-## 🛠️ Stack Technologiczny
+### 2. Stos Technologiczny
 
-* **Języki Programowania:** JavaScript (ES6+), PHP, HTML5, CSS3.
-* **Format Danych:** JSON (wymiana danych między PHP a JS).
-* **Narzędzia Deweloperskie:** Vite (szybkie budowanie i HMR), Node.js (wyłącznie do procesów kompilacji).
-* **Biblioteki Zewnętrzne:** `marked.js` do renderowania opisów kanałów z formatu Markdown.
+**Frontend:**
+* **React.js:** Odpowiada za dynamiczny interfejs.
+* **Tailwind CSS:** System klas do szybkiego budowania wyglądu (odpowiada za responsywność, czyli wygodne przeglądanie ofert pracy na telefonach).
 
-##  Logika Biznesowa i Podział Treści
+**Backend:**
+* **Baza danych**
 
-### 1. Kategorie Główne (Stream Types)
-Aplikacja kategoryzuje treści w sposób bardziej precyzyjny niż standardowy katalog Twitcha:
-* **Gaming:**
-    * *Esports*: Transmisje z turniejów i pro-playerzy.
-    * *Speedrun*: Przechodzenie gier na czas.
-* **IRL & Creative:**
-    * *Just Chatting*: Rozmowy, podcasty i interakcja z czatem.
-    * *Software & Dev*: Live-coding, elektronika i technologia.
+### 3. Kluczowe Funkcje
 
-### 2. System Filtrowania i Tagi
-* **Menu Tagi:** Interaktywny panel, który pobiera i wyświetla aktualne tagi bezpośrednio z serwerów Twitcha (np. *No Backseating*, *Drops Enabled*, *Level Up*).
-* **Dynamiczne Filtrowanie:** Natychmiastowe odświeżanie listy na podstawie:
-    * Popularności (sortowanie od największych lub najmniejszych transmisji).
-    * Języka (np. wybór wyłącznie kanałów polskojęzycznych).
-    * Przynależności do wybranej sub-grupy tematycznej.
+* **Dynamiczny Pasek Kategorii:** Główne menu (np. Obsługa Klienta, Magazyn, Produkcja, Ochrona), które po kliknięciu błyskawicznie filtruje listę ogłoszeń bez odświeżania całej strony.
+* **Wyszukiwarka Live:** Pole tekstowe pozwalające znaleźć konkretne stanowisko lub pracodawcę po nazwie (np. wpisanie słowa "Kasjer" filtruje wyniki w czasie rzeczywistym podczas pisania).
+* **Sortowanie wyników:** Możliwość ułożenia ofert pracy według:
+    * Alfabetycznie (A-Z) – ułożenie po nazwie stanowiska lub nazwie firmy zatrudniającej.
 
-##  UX/UI i Prezentacja
+### Cele na przyszłość:
 
-### Live Card Design (Karta Streamu)
-Każdy stream prezentowany jest w formie nowoczesnej karty:
-* **Dynamic Thumbnail:** Podgląd na żywo pobierany z Twitcha w formie klatek z transmisji.
-* **Status Live:** Pulsujący wskaźnik "LIVE" wraz z dynamicznie aktualizowaną liczbą widzów.
-* **Opis Kanału:** Sekcja "O mnie" streamera, renderowana z formatu Markdown przy użyciu biblioteki `marked.js`.
-
-### Wygląd i Układ
-* **Dark Mode:** Nowoczesny, ciemny motyw graficzny wykorzystujący estetykę Twitcha (odcienie fioletu i szarości).
-* **Layout:** Responsywna siatka (CSS Grid), która dostosowuje liczbę kolumn do szerokości ekranu (Desktop / Mobile).
-
-##  Wymagania Techniczne i Standardy
-
-### Dostępność (WCAG 2.1)
-* Zachowanie wysokiego kontrastu tekstów i elementów nawigacyjnych.
-* Czytelne etykiety (Aria-labels) dla czytników ekranu, szczególnie przy dynamicznie zmieniających się licznikach widzów.
-
-### Dokumentacja Projektowa
-* **Kod źródłowy:** Pełne opisy funkcji i logiki autoryzacji w standardzie JSDocs (dla JS) oraz PHPDoc (dla PHP).
-* **Struktura JSON:** Dokumentacja Markdown opisująca mapowanie pól z natywnego API Twitcha na format wykorzystywany przez frontend aplikacji.
-
-##  Grupa Docelowa
-Użytkownicy Twitcha poszukujący nowych, ciekawych twórców poza głównym algorytmem strony głównej, szczególnie zainteresowani konkretnymi niszami tematycznymi (np. programowanie, speedruny).
+* Dodanie lokalizacji miejsc pracy po wybraniu konkretnej oferty (np. mapa z dokładnym adresem marketu, w którym potrzebny jest kasjer).
+* System dodawania opinii o pracodawcach z różnych branż (jak traktowani są pracownicy, terminowość wypłat).
+* Dodanie opcji faworyzacji branż (np. "Handel"), aby oferty z tych kategorii wyświetlały się na początku listy przy kolejnych wizytach na stronie.
